@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Book = ({ book }) => (
   <>
-    <td>{ book.id.toFixed(0) }</td>
+    <td>{ book.id }</td>
     <td>{ book.title }</td>
     <td>{ book.category }</td>
   </>

@@ -1,23 +1,24 @@
+import shortid from 'shortid';
 import { CREATE_BOOK, REMOVE_BOOK } from '../actions/index';
 
 const initialState = [
   {
-    id: 100 * Math.random(),
+    id: shortid.generate(),
     title: 'Frankenstein in Baghdad',
     category: 'Action',
   },
   {
-    id: 100 * Math.random(),
+    id: shortid.generate(),
     title: 'Gangster With Determination',
     category: 'Horror',
   },
   {
-    id: 100 * Math.random(),
+    id: shortid.generate(),
     title: 'In Search of Lost Time',
     category: 'History',
   },
   {
-    id: 100 * Math.random(),
+    id: shortid.generate(),
     title: 'Dune',
     category: 'Sci-Fi',
   },
