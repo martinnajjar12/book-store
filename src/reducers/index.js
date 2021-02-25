@@ -1,6 +1,6 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import bookReducer from './book';
+import { combineReducers } from 'redux';
+import bookReducer from './books';
 
-const rootReducer = () => combineReducers(bookReducer);
+const rootReducer = combineReducers({ books: bookReducer });
 
 export default rootReducer;
