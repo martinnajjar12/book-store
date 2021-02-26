@@ -1,3 +1,9 @@
+import {
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
@@ -7,7 +13,8 @@ const categories = ['', 'Action', 'Biography', 'History', 'Horror', 'Kids', 'Lea
 
 const BookForm = () => {
   const category = categories.map(category => (
-    <option key={category} value={category}>{ category }</option>
+    // <option key={category} value={category}>{ category }</option>
+    <MenuItem key={category} value={category}>{category}</MenuItem>
   ));
   const [inputValue, setInputValue] = useState('');
   const [selectValue, setSelectValue] = useState('');
@@ -29,10 +36,16 @@ const BookForm = () => {
   return (
     <>
       <form>
-        <input value={inputValue} onChange={handleInputChange} type="text" />
-        <select value={selectValue} onChange={handleSelectChange}>
+        <TextField label="Book Name" variant="outlined" value={inputValue} onChange={handleInputChange} />
+        <InputLabel id="categorySelect">Category</InputLabel>
+        <Select
+          labelId="categorySelect"
+          value={selectValue}
+          onChange={handleSelectChange}
+          style={{ width: 300 }}
+        >
           {category}
-        </select>
+        </Select>
         <button
           onClick={handleSubmit}
           type="button"
