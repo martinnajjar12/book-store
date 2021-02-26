@@ -19,7 +19,7 @@ const BooksList = () => {
 
   const loopThroughTheBooks = () => {
     let printedBooks = books;
-    if (category === 'All') {
+    if (typeof category === 'object') {
       printedBooks = books;
     } else {
       printedBooks = books.filter(book => book.category === category);

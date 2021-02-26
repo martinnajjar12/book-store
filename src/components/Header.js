@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+// import Brightness7Icon from '@material-ui/icons/Brightness7';
 import React from 'react';
 
 const useStyles = makeStyles(() => ({
