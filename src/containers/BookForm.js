@@ -12,11 +12,11 @@ const BookForm = () => {
   const [inputValue, setInputValue] = useState('');
   const [selectValue, setSelectValue] = useState('');
 
-  const handleInputChange = e => {
-    setInputValue(e.target.value);
+  const handleInputChange = ({ target: { value } }) => {
+    setInputValue(value);
   };
-  const handleSelectChange = e => {
-    setSelectValue(e.target.value);
+  const handleSelectChange = ({ target: { value } }) => {
+    setSelectValue(value);
   };
   const dispatch = useDispatch();
 

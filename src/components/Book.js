@@ -3,18 +3,18 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { REMOVE_BOOK } from '../actions/index';
 
-const Book = ({ book }) => {
+const Book = ({ book: { id, title, category } }) => {
   const dispatch = useDispatch();
   return (
     <>
-      <td>{ book.id }</td>
-      <td>{ book.title }</td>
-      <td>{ book.category }</td>
+      <td>{ id }</td>
+      <td>{ title }</td>
+      <td>{ category }</td>
       <td>
         <button
           type="button"
           onClick={() => {
-            dispatch(REMOVE_BOOK(book));
+            dispatch(REMOVE_BOOK({ id, title, category }));
           }}
         >
           Remove Book
