@@ -11,14 +11,11 @@ const BookForm = () => {
   ));
   const [inputValue, setInputValue] = useState('');
   const [selectValue, setSelectValue] = useState('');
-
-  const handleInputChange = ({ target: { value } }) => {
-    setInputValue(value);
-  };
-  const handleSelectChange = ({ target: { value } }) => {
-    setSelectValue(value);
-  };
   const dispatch = useDispatch();
+
+  const handleInputChange = ({ target: { value } }) => setInputValue(value);
+  const handleSelectChange = ({ target: { value } }) => setSelectValue(value);
+
   const handleSubmit = () => {
     dispatch(CREATE_BOOK({
       id: shortid.generate(),
