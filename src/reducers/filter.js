@@ -1,10 +1,6 @@
-const initialState = ['All', 'Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
-
-const filter = (state = initialState, { type, payload }) => {
+const filter = (state = 'All', { type, payload }) => {
   if (type === 'CHANGE_FILTER') {
     switch (payload) {
-      case 'All':
-        return initialState;
       case 'Action':
         return 'Action';
       case 'Biography':

@@ -6,6 +6,7 @@ import { REMOVE_BOOK, CHANGE_FILTER } from '../actions/index';
 
 const BooksList = () => {
   const books = useSelector(state => state.books);
+  const category = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const handleRemoveBook = book => {
@@ -16,11 +17,19 @@ const BooksList = () => {
     dispatch(CHANGE_FILTER(name));
   };
 
-  const loopThroughTheBooks = books.map(book => (
-    <tr key={book.id}>
-      <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
-    </tr>
-  ));
+  const loopThroughTheBooks = () => {
+    let printedBooks = books;
+    if (category === 'All') {
+      printedBooks = books;
+    } else {
+      printedBooks = books.filter(book => book.category === category);
+    }
+    return printedBooks.map(book => (
+      <tr key={book.id}>
+        <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
+      </tr>
+    ));
+  };
 
   return (
     <>
@@ -35,7 +44,7 @@ const BooksList = () => {
           </tr>
         </thead>
         <tbody>
-          { loopThroughTheBooks }
+          { loopThroughTheBooks() }
         </tbody>
       </table>
     </>
