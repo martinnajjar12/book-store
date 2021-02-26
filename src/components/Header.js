@@ -14,19 +14,26 @@ const useStyles = makeStyles(() => ({
   root: {
     color: '#fff',
   },
+  logoSize: {
+    fontSize: '30px',
+    fontWeight: 'bolder',
+  },
+  navBackground: {
+    backgroundColor: '#fff',
+  },
 }));
 
 const Header = () => {
   const classes = useStyles();
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={classes.navBackground}>
       <Toolbar>
         <Container>
           <Grid container justify="space-between" alignItems="center">
-            <Typography variant="h6">
-              News
+            <Typography color="primary" variant="h6" className={classes.logoSize}>
+              Bookstore CMS
             </Typography>
-            <IconButton className={classes.root}>
+            <IconButton color="primary">
               <Brightness4Icon />
             </IconButton>
           </Grid>
