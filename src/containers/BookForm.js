@@ -1,8 +1,12 @@
 import {
+  Button,
+  Divider,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
   TextField,
+  Typography,
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -35,23 +39,26 @@ const BookForm = () => {
 
   return (
     <>
+      <Divider style={{ margin: '30px 0 50px' }} />
+      <Typography color="textSecondary" variant="h4" style={{ fontWeight: 'bolder', marginBottom: 25 }}>ADD NEW BOOK</Typography>
       <form>
-        <TextField label="Book Name" variant="outlined" value={inputValue} onChange={handleInputChange} />
-        <InputLabel id="categorySelect">Category</InputLabel>
-        <Select
-          labelId="categorySelect"
-          value={selectValue}
-          onChange={handleSelectChange}
-          style={{ width: 300 }}
-        >
-          {category}
-        </Select>
-        <button
-          onClick={handleSubmit}
-          type="button"
-        >
-          Submit
-        </button>
+        <Grid container justify="space-around" style={{ marginBottom: 150 }}>
+          <TextField style={{ width: 750 }} label="Book Name" variant="outlined" value={inputValue} onChange={handleInputChange} />
+          <div style={{ margin: '0 25px' }}>
+            <InputLabel id="categorySelect">Category</InputLabel>
+            <Select
+              labelId="categorySelect"
+              value={selectValue}
+              onChange={handleSelectChange}
+              style={{ width: 300 }}
+            >
+              {category}
+            </Select>
+          </div>
+          <Button onClick={handleSubmit} variant="contained" color="primary">
+            Submit
+          </Button>
+        </Grid>
       </form>
     </>
   );
