@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from '../components/Book';
-import { REMOVE_BOOK } from '../actions/index';
+import CategoryFilter from '../components/CategoryFilter';
+import { REMOVE_BOOK, CHANGE_FILTER } from '../actions/index';
 
 const BooksList = () => {
   const books = useSelector(state => state.books);
@@ -11,6 +12,10 @@ const BooksList = () => {
     dispatch(REMOVE_BOOK(book));
   };
 
+  const handleFilterChange = name => {
+    dispatch(CHANGE_FILTER(name));
+  };
+
   const loopThroughTheBooks = books.map(book => (
     <tr key={book.id}>
       <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
@@ -18,19 +23,22 @@ const BooksList = () => {
   ));
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Book ID</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        { loopThroughTheBooks }
-      </tbody>
-    </table>
+    <>
+      <CategoryFilter filterHandler={handleFilterChange} />
+      <table>
+        <thead>
+          <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          { loopThroughTheBooks }
+        </tbody>
+      </table>
+    </>
   );
 };
 

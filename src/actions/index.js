@@ -8,6 +8,7 @@ export const REMOVE_BOOK = book => ({
   payload: book,
 });
 
-export const CHANGE_FILTER = () => ({
+export const CHANGE_FILTER = category => ({
   type: 'CHANGE_FILTER',
+  payload: category,
 });
