@@ -19,6 +19,15 @@ const BookForm = () => {
     setSelectValue(value);
   };
   const dispatch = useDispatch();
+  const handleSubmit = () => {
+    dispatch(CREATE_BOOK({
+      id: shortid.generate(),
+      title: inputValue,
+      category: selectValue,
+    }));
+    setSelectValue('');
+    setInputValue('');
+  };
 
   return (
     <>
@@ -28,13 +37,7 @@ const BookForm = () => {
           {category}
         </select>
         <button
-          onClick={() => {
-            dispatch(CREATE_BOOK({
-              id: shortid.generate(),
-              title: inputValue,
-              category: selectValue,
-            }));
-          }}
+          onClick={handleSubmit}
           type="button"
         >
           Submit
