@@ -1,5 +1,4 @@
 import shortid from 'shortid';
-import { CREATE_BOOK, REMOVE_BOOK } from '../actions/index';
 
 const initialState = [
   {
@@ -26,9 +25,9 @@ const initialState = [
 
 const bookReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case CREATE_BOOK:
+    case 'CREATE_BOOK':
       return [...state, payload];
-    case REMOVE_BOOK:
+    case 'REMOVE_BOOK':
       return state.filter(book => book.id !== payload.id);
     default:
       return state;
