@@ -1,4 +1,4 @@
-const initialState = ['All', 'Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+const initialState = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
 const filter = (state = initialState, { type, payload }) => {
   if (type === 'CHANGE_FILTER') {

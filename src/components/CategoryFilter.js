@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const CategoryFilter = ({ filterHandler }) => {
-  const categories = ['All', 'Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+  const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
   return (
     <Autocomplete
       onChange={e => filterHandler(e.target.textContent)}
@@ -13,7 +13,7 @@ const CategoryFilter = ({ filterHandler }) => {
           filterHandler(e.target.value);
         }
       }}
-      options={categories}
+      options={['All', ...categories]}
       getOptionLabel={option => option}
       style={{ width: 500, marginTop: 40 }}
       // eslint-disable-next-line react/jsx-props-no-spreading

@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
 import { CREATE_BOOK } from '../actions/index';
 
-const categories = ['', 'Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
+const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
 const BookForm = () => {
   const category = categories.map(category => (
@@ -28,13 +28,17 @@ const BookForm = () => {
   const handleSelectChange = ({ target: { value } }) => setSelectValue(value);
 
   const handleSubmit = () => {
-    dispatch(CREATE_BOOK({
-      id: shortid.generate(),
-      title: inputValue,
-      category: selectValue,
-    }));
-    setSelectValue('');
-    setInputValue('');
+    if (inputValue !== '' && selectValue !== '') {
+      dispatch(CREATE_BOOK({
+        id: shortid.generate(),
+        title: inputValue,
+        category: selectValue,
+      }));
+      setSelectValue('');
+      setInputValue('');
+    } else {
+      alert('Please fill in the inputs');
+    }
   };
 
   return (
