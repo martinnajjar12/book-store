@@ -16,11 +16,17 @@ const useStyles = makeStyles({
     width: '100%',
     height: '170px',
     margin: '25px 0',
-    padding: 25,
+    padding: 30,
     display: 'block',
   },
   percent: {
     fontSize: 32,
+  },
+  divider: {
+    borderRight: '1px solid #e8e8e8',
+  },
+  progressMargin: {
+    marginRight: 25,
   },
 });
 
@@ -56,19 +62,19 @@ const BooksList = () => {
             <Grid item sm={6}>
               <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
             </Grid>
-            <Grid item sm={3} container spacing={5}>
-              <Grid item>
-                <CircularProgress size={70} variant="determinate" value={completedPercent} />
-              </Grid>
-              <Grid item>
+            <Grid className={classes.divider} item container sm={3}>
+              <CircularProgress className={classes.progressMargin} size={70} variant="determinate" value={completedPercent} />
+              <div>
                 <Typography className={classes.percent}>
                   {completedPercent}
                   %
                 </Typography>
                 <Typography variant="subtitle2">Completed</Typography>
-              </Grid>
+              </div>
             </Grid>
-            <Grid item sm={3}>something</Grid>
+            <Grid item sm={3}>
+              <Typography>Helo workd</Typography>
+            </Grid>
           </Grid>
         </Paper>
       );
