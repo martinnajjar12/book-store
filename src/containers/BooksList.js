@@ -24,6 +24,8 @@ const useStyles = makeStyles({
   },
 });
 
+const randomNumber = () => parseInt((100 * Math.random()).toFixed(), 10);
+
 const BooksList = () => {
   const classes = useStyles();
   const books = useSelector(state => state.books);
@@ -45,25 +47,32 @@ const BooksList = () => {
     } else {
       printedBooks = books.filter(book => book.category === category);
     }
-    return printedBooks.map(book => (
-      <Paper key={book.id} className={classes.root} elevation={5}>
-        <Grid container alignItems="center">
-          <Grid item sm={6}>
-            <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
-          </Grid>
-          <Grid item sm={3} container spacing={5}>
-            <Grid item>
-              <CircularProgress size={70} variant="determinate" value={75} />
+
+    return printedBooks.map(book => {
+      const completedPercent = randomNumber();
+      return (
+        <Paper key={book.id} className={classes.root} elevation={5}>
+          <Grid container alignItems="center">
+            <Grid item sm={6}>
+              <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
             </Grid>
-            <Grid item>
-              <Typography className={classes.percent}>75%</Typography>
-              <Typography variant="subtitle2">Completed</Typography>
+            <Grid item sm={3} container spacing={5}>
+              <Grid item>
+                <CircularProgress size={70} variant="determinate" value={completedPercent} />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.percent}>
+                  {completedPercent}
+                  %
+                </Typography>
+                <Typography variant="subtitle2">Completed</Typography>
+              </Grid>
             </Grid>
+            <Grid item sm={3}>something</Grid>
           </Grid>
-          <Grid item sm={3}>something</Grid>
-        </Grid>
-      </Paper>
-    ));
+        </Paper>
+      );
+    });
   };
 
   return (
