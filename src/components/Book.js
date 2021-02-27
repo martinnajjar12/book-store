@@ -6,7 +6,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import '../index.css';
+import '../robotoSlab.css';
 
 const linkButton = (e, func) => {
   e.preventDefault();
@@ -46,7 +46,7 @@ const Book = ({
     <>
       <div><Chip className={classes.chipsDiv} size="small" color="primary" variant="outlined" label={category} /></div>
       <div><Typography variant="h5">{ title }</Typography></div>
-      <div><Typography color="primary" variant="subtitle2">Author</Typography></div>
+      <div><Typography className={classes.changeFont} color="primary" variant="subtitle2">Author</Typography></div>
       <div className={classes.linksDiv}>
         { /* eslint-disable-next-line jsx-a11y/anchor-is-valid */ }
         <Link className={classes.changeFont} href="#">Comments</Link>

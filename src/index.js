@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 import rootReducer from './reducers/index';
 import App from './components/App';
-import './index.css';
+import './robotoSlab.css';
 
 const store = createStore(rootReducer);
 
@@ -19,9 +19,7 @@ const theme = createMuiTheme({
   typography: {
     h5: {
       fontFamily: ['Roboto Slab', 'Roboto', 'Helvetica'].join(','),
-    },
-    subtitle2: {
-      fontFamily: ['Roboto Slab', 'Roboto', 'Helvetica'].join(','),
+      fontWeight: 700,
     },
   },
 });

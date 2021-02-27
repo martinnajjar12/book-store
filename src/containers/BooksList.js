@@ -1,6 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, makeStyles, Paper } from '@material-ui/core';
+import {
+  CircularProgress,
+  Grid,
+  makeStyles,
+  Paper,
+  Typography,
+} from '@material-ui/core';
 import Book from '../components/Book';
 import CategoryFilter from '../components/CategoryFilter';
 import { REMOVE_BOOK, CHANGE_FILTER } from '../actions/index';
@@ -13,8 +19,8 @@ const useStyles = makeStyles({
     padding: 25,
     display: 'block',
   },
-  tableWidth: {
-    width: '100%',
+  percent: {
+    fontSize: 32,
   },
 });
 
@@ -45,7 +51,15 @@ const BooksList = () => {
           <Grid item sm={6}>
             <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
           </Grid>
-          <Grid item sm={3}>something</Grid>
+          <Grid item sm={3} container spacing={5}>
+            <Grid item>
+              <CircularProgress size={70} variant="determinate" value={75} />
+            </Grid>
+            <Grid item>
+              <Typography className={classes.percent}>75%</Typography>
+              <Typography variant="subtitle2">Completed</Typography>
+            </Grid>
+          </Grid>
           <Grid item sm={3}>something</Grid>
         </Grid>
       </Paper>
