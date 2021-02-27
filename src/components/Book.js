@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Chip, Typography } from '@material-ui/core';
 
 const Book = ({
   removeBookHandler,
@@ -11,17 +12,16 @@ const Book = ({
   },
 }) => (
   <>
-    <td>{ id }</td>
-    <td>{ title }</td>
-    <td>{ category }</td>
-    <td>
+    <div><Chip size="small" color="primary" variant="outlined" label={category} /></div>
+    <div><Typography variant="h5">{ title }</Typography></div>
+    <div>
       <button
         type="button"
         onClick={() => removeBookHandler({ id, title, category })}
       >
         Remove Book
       </button>
-    </td>
+    </div>
   </>
 );
 

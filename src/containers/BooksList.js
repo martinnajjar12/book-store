@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeStyles, Paper } from '@material-ui/core';
+import { Grid, makeStyles, Paper } from '@material-ui/core';
 import Book from '../components/Book';
 import CategoryFilter from '../components/CategoryFilter';
 import { REMOVE_BOOK, CHANGE_FILTER } from '../actions/index';
@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: '170px',
     margin: '25px 0',
+    padding: 25,
     display: 'block',
   },
   tableWidth: {
@@ -39,8 +40,14 @@ const BooksList = () => {
       printedBooks = books.filter(book => book.category === category);
     }
     return printedBooks.map(book => (
-      <Paper key={book.id} component="tr" className={classes.root} elevation={5}>
-        <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
+      <Paper key={book.id} className={classes.root} elevation={5}>
+        <Grid container alignItems="center">
+          <Grid item sm={6}>
+            <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
+          </Grid>
+          <Grid item sm={3}>something</Grid>
+          <Grid item sm={3}>something</Grid>
+        </Grid>
       </Paper>
     ));
   };
@@ -48,11 +55,7 @@ const BooksList = () => {
   return (
     <>
       <CategoryFilter filterHandler={handleFilterChange} />
-      <table className={classes.tableWidth}>
-        <tbody>
-          { loopThroughTheBooks() }
-        </tbody>
-      </table>
+      { loopThroughTheBooks() }
     </>
   );
 };

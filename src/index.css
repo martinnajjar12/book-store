@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 700;
+  src: local('Roboto Slab'), url(../node_modules/@fontsource/roboto-slab/700.css) format('woff');
+}
