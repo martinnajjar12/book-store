@@ -20,6 +20,9 @@ const theme = createMuiTheme({
     h5: {
       fontFamily: ['Roboto Slab', 'Roboto', 'Helvetica'].join(','),
     },
+    subtitle2: {
+      fontFamily: ['Roboto Slab', 'Roboto', 'Helvetica'].join(','),
+    },
   },
 });
 
