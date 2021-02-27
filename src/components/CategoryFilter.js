@@ -15,7 +15,7 @@ const CategoryFilter = ({ filterHandler }) => {
       }}
       options={['All', ...categories]}
       getOptionLabel={option => option}
-      style={{ width: 500, marginTop: 40 }}
+      style={{ width: '100%', marginTop: 40 }}
       // eslint-disable-next-line react/jsx-props-no-spreading
       renderInput={params => <TextField {...params} label="Category Filtering" variant="outlined" />}
     />

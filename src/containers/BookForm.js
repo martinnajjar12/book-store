@@ -1,6 +1,8 @@
 import {
   Button,
   Divider,
+  FormControl,
+  FormHelperText,
   Grid,
   InputLabel,
   MenuItem,
@@ -17,11 +19,12 @@ const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learnin
 
 const BookForm = () => {
   const category = categories.map(category => (
-    // <option key={category} value={category}>{ category }</option>
     <MenuItem key={category} value={category}>{category}</MenuItem>
   ));
   const [inputValue, setInputValue] = useState('');
   const [selectValue, setSelectValue] = useState('');
+  const [error, setError] = useState(false);
+  const [helperText, setHelperText] = useState('');
   const dispatch = useDispatch();
 
   const handleInputChange = ({ target: { value } }) => setInputValue(value);
@@ -29,6 +32,7 @@ const BookForm = () => {
 
   const handleSubmit = () => {
     if (inputValue !== '' && selectValue !== '') {
+      setError(false);
       dispatch(CREATE_BOOK({
         id: shortid.generate(),
         title: inputValue,
@@ -37,7 +41,8 @@ const BookForm = () => {
       setSelectValue('');
       setInputValue('');
     } else {
-      alert('Please fill in the inputs');
+      setError(true);
+      setHelperText('Fill in all the inputs please');
     }
   };
 
@@ -46,23 +51,28 @@ const BookForm = () => {
       <Divider style={{ margin: '30px 0 50px' }} />
       <Typography color="textSecondary" variant="h4" style={{ fontWeight: 'bolder', marginBottom: 25 }}>ADD NEW BOOK</Typography>
       <form>
-        <Grid container justify="space-around" style={{ marginBottom: 150 }}>
-          <TextField style={{ width: 750 }} label="Book Name" variant="outlined" value={inputValue} onChange={handleInputChange} />
-          <div style={{ margin: '0 25px' }}>
-            <InputLabel id="categorySelect">Category</InputLabel>
-            <Select
-              labelId="categorySelect"
-              value={selectValue}
-              onChange={handleSelectChange}
-              style={{ width: 300 }}
-            >
-              {category}
-            </Select>
-          </div>
-          <Button onClick={handleSubmit} variant="contained" color="primary">
-            Submit
-          </Button>
-        </Grid>
+        <FormControl component="fieldset" error={error}>
+          <Grid container justify="space-around" style={{ marginBottom: 150 }}>
+            <TextField error={error} style={{ width: 750 }} label="Book Name" value={inputValue} onChange={handleInputChange} />
+            <div style={{ margin: '0 25px' }}>
+              <div style={{ position: 'relative' }}>
+                <InputLabel id="categorySelect">Category</InputLabel>
+                <Select
+                  labelId="categorySelect"
+                  value={selectValue}
+                  onChange={handleSelectChange}
+                  style={{ width: 300 }}
+                >
+                  {category}
+                </Select>
+              </div>
+            </div>
+            <Button onClick={handleSubmit} variant="contained" color="primary">
+              Submit
+            </Button>
+            <FormHelperText style={{ marginTop: 25 }}>{helperText}</FormHelperText>
+          </Grid>
+        </FormControl>
       </form>
     </>
   );
