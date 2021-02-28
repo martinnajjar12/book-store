@@ -13,19 +13,26 @@ import CategoryFilter from '../components/CategoryFilter';
 import { REMOVE_BOOK, CHANGE_FILTER } from '../actions/index';
 import '../robotoSlab.css';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    height: '170px',
     margin: '25px 0',
-    padding: 30,
+    padding: 15,
     display: 'block',
+    [theme.breakpoints.up('sm')]: {
+      padding: 30,
+    },
   },
   percent: {
     fontSize: 32,
   },
   divider: {
-    borderRight: '1px solid #e8e8e8',
+    margin: '30px 0',
+    padding: '0 5px',
+    [theme.breakpoints.up('sm')]: {
+      borderRight: '1px solid #e8e8e8',
+      margin: 0,
+    },
   },
   progressMargin: {
     marginRight: 25,
@@ -36,10 +43,13 @@ const useStyles = makeStyles({
   weight700: {
     fontWeight: 500,
   },
-  buttonMargin: {
+  buttonStyles: {
     marginTop: 25,
+    [theme.breakpoints.only('sm')]: {
+      width: 120,
+    },
   },
-});
+}));
 
 const randomNumber = () => parseInt((100 * Math.random()).toFixed(), 10);
 
@@ -70,10 +80,10 @@ const BooksList = () => {
       return (
         <Paper key={book.id} className={classes.root} elevation={5}>
           <Grid container alignItems="center">
-            <Grid item sm={6}>
+            <Grid item sm={5} lg={6}>
               <Book book={book} removeBookHandler={book => handleRemoveBook(book)} />
             </Grid>
-            <Grid className={classes.divider} item container sm={3}>
+            <Grid justify="center" alignItems="center" className={classes.divider} item container sm={4} lg={3}>
               <CircularProgress className={classes.progressMargin} size={70} variant="determinate" value={completedPercent} />
               <div>
                 <Typography className={classes.percent}>
@@ -86,7 +96,7 @@ const BooksList = () => {
             <Grid item container direction="column" sm={3} justify="center" alignItems="center">
               <Typography variant="subtitle1" color="textSecondary" className={classes.robotoFont}>Current Chapter</Typography>
               <Typography className={`${classes.robotoFont} ${classes.weight700}`}>Chapter 17</Typography>
-              <Button variant="contained" color="primary" className={`${classes.robotoFont} ${classes.buttonMargin}`}>Update Progress</Button>
+              <Button variant="contained" color="primary" className={`${classes.robotoFont} ${classes.buttonStyles}`}>Update Progress</Button>
             </Grid>
           </Grid>
         </Paper>
