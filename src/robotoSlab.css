@@ -1,16 +1,1 @@
-/* @font-face {
-  font-family: 'Roboto Slab';
-  src: url(../node_modules/@fontsource/roboto-slab/700.css) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto Slab';
-  src: url(../node_modules/@fontsource/roboto-slab/300.css) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto Slab';
-  src: url(../node_modules/@fontsource/roboto-slab/400.css) format('woff');
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');

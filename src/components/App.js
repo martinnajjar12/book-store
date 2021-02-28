@@ -10,7 +10,10 @@ import BookForm from '../containers/BookForm';
 import Header from './Header';
 
 const getUserThemeState = () => {
-  const userTheme = localStorage.getItem('themeBool');
+  let userTheme = localStorage.getItem('themeBool');
+  if (userTheme === null) {
+    userTheme = 'true';
+  }
   if (userTheme === 'false') {
     return { theme: 'dark', bool: userTheme };
   }
