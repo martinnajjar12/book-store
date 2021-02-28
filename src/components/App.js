@@ -9,8 +9,16 @@ import BooksList from '../containers/BooksList';
 import BookForm from '../containers/BookForm';
 import Header from './Header';
 
+const getUserThemeState = () => {
+  const userTheme = localStorage.getItem('themeBool');
+  if (userTheme === 'false') {
+    return { theme: 'dark', bool: userTheme };
+  }
+  return { theme: 'light', bool: userTheme };
+};
+
 const App = () => {
-  const [currentTheme, setCurrentTheme] = useState('light');
+  const [currentTheme, setCurrentTheme] = useState(getUserThemeState().theme);
 
   const changeTheme = type => {
     if (type) {
@@ -37,7 +45,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header themeFunc={changeTheme} type={currentTheme} />
+      <Header themeFunc={changeTheme} light={getUserThemeState().bool} />
       <Container>
         <BooksList />
         <BookForm />

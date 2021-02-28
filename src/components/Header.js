@@ -22,13 +22,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Header = ({ themeFunc }) => {
-  const [bool, setBool] = useState(false);
+const saveLocal = trueOrFalse => {
+  localStorage.setItem('themeBool', trueOrFalse);
+};
+
+const Header = ({ themeFunc, light }) => {
+  const usedBool = light === 'true';
+  const [bool, setBool] = useState(usedBool);
   const classes = useStyles();
 
   const themeToggler = () => {
     setBool(!bool);
-    themeFunc(bool);
+    themeFunc(!bool);
+    saveLocal(!bool);
   };
 
   return (
@@ -40,7 +46,7 @@ const Header = ({ themeFunc }) => {
               Bookstore CMS
             </Typography>
             <IconButton color="primary" onClick={() => themeToggler()}>
-              { bool ? <Brightness7Icon /> : <Brightness4Icon /> }
+              { bool ? <Brightness4Icon /> : <Brightness7Icon /> }
             </IconButton>
           </Grid>
         </Container>
@@ -51,6 +57,7 @@ const Header = ({ themeFunc }) => {
 
 Header.propTypes = {
   themeFunc: PropTypes.func.isRequired,
+  light: PropTypes.string.isRequired,
 };
 
 export default Header;
