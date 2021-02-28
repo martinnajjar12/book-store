@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-// import Brightness7Icon from '@material-ui/icons/Brightness7';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 import React, { useState } from 'react';
 
 const useStyles = makeStyles(() => ({
@@ -42,8 +42,8 @@ const Header = ({ themeFunc }) => {
             <Typography color="primary" variant="h6" className={classes.logoSize}>
               Bookstore CMS
             </Typography>
-            <IconButton color="primary" onClick={() => themeToggler(bool)}>
-              <Brightness4Icon />
+            <IconButton color="primary" onClick={() => themeToggler()}>
+              { bool ? <Brightness7Icon /> : <Brightness4Icon /> }
             </IconButton>
           </Grid>
         </Container>
