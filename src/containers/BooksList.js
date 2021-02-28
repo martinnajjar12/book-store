@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  Button,
   CircularProgress,
   Grid,
   makeStyles,
@@ -10,6 +11,7 @@ import {
 import Book from '../components/Book';
 import CategoryFilter from '../components/CategoryFilter';
 import { REMOVE_BOOK, CHANGE_FILTER } from '../actions/index';
+import '../robotoSlab.css';
 
 const useStyles = makeStyles({
   root: {
@@ -27,6 +29,15 @@ const useStyles = makeStyles({
   },
   progressMargin: {
     marginRight: 25,
+  },
+  robotoFont: {
+    fontFamily: ['Roboto Slab', 'roboto', 'Helvetica'].join(','),
+  },
+  weight700: {
+    fontWeight: 500,
+  },
+  buttonMargin: {
+    marginTop: 25,
   },
 });
 
@@ -72,8 +83,10 @@ const BooksList = () => {
                 <Typography variant="subtitle2">Completed</Typography>
               </div>
             </Grid>
-            <Grid item sm={3}>
-              <Typography>Helo workd</Typography>
+            <Grid item container direction="column" sm={3} justify="center" alignItems="center">
+              <Typography variant="subtitle1" color="textSecondary" className={classes.robotoFont}>Current Chapter</Typography>
+              <Typography className={`${classes.robotoFont} ${classes.weight700}`}>Chapter 17</Typography>
+              <Button variant="contained" color="primary" className={`${classes.robotoFont} ${classes.buttonMargin}`}>Update Progress</Button>
             </Grid>
           </Grid>
         </Paper>

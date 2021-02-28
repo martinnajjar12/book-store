@@ -20,9 +20,11 @@ const useStyles = makeStyles({
     borderLeft: '1px solid #e8e8e8',
     borderRight: '1px solid #e8e8e8',
     fontFamily: ['Roboto Slab', 'Roboto', 'Helvetica'].join(','),
+    fontWeight: 300,
   },
   changeFont: {
     fontFamily: ['Roboto Slab', 'Roboto', 'Helvetica'].join(','),
+    fontWeight: 300,
   },
   linksDiv: {
     marginTop: 15,
