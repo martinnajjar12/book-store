@@ -18,7 +18,7 @@ import { CREATE_BOOK } from '../actions/index';
 
 const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   dividerStyles: {
     margin: '30px 0 50px',
   },
@@ -26,25 +26,45 @@ const useStyles = makeStyles({
     fontWeight: 'bolder',
     marginBottom: 25,
   },
+  root: {
+    width: '100%',
+  },
   gridStyles: {
     marginBottom: 150,
   },
   textFieldStyles: {
-    width: 750,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '40%',
+    },
   },
   firstDivStyles: {
-    margin: '0 25px',
+    marginTop: 25,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '30%',
+      marginTop: 0,
+    },
   },
   secondDivStyles: {
     position: 'relative',
+    width: '100%',
   },
   selectStyles: {
-    width: 300,
+    width: '100%',
+  },
+  buttonStyles: {
+    marginTop: 25,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginTop: 0,
+      width: '20%',
+    },
   },
   formHelperTextStyles: {
     marginTop: 25,
   },
-});
+}));
 
 const BookForm = () => {
   const classes = useStyles();
@@ -82,7 +102,7 @@ const BookForm = () => {
       <Divider className={classes.dividerStyles} />
       <Typography color="textSecondary" variant="h4" className={classes.typographyStyles}>ADD NEW BOOK</Typography>
       <form>
-        <FormControl component="fieldset" error={error}>
+        <FormControl className={classes.root} component="fieldset" error={error}>
           <Grid container justify="space-around" className={classes.gridStyles}>
             <TextField error={error} className={classes.textFieldStyles} label="Book Name" value={inputValue} onChange={handleInputChange} />
             <div className={classes.firstDivStyles}>
@@ -98,7 +118,7 @@ const BookForm = () => {
                 </Select>
               </div>
             </div>
-            <Button onClick={handleSubmit} variant="contained" color="primary">
+            <Button className={classes.buttonStyles} onClick={handleSubmit} variant="contained" color="primary">
               Submit
             </Button>
             <FormHelperText className={classes.formHelperTextStyles}>{helperText}</FormHelperText>
