@@ -12,13 +12,16 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import React, { useState } from 'react';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     color: '#fff',
   },
   logoSize: {
-    fontSize: '30px',
+    fontSize: '20px',
     fontWeight: 'bolder',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '30px',
+    },
   },
 }));
 
