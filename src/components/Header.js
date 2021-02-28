@@ -20,9 +20,6 @@ const useStyles = makeStyles(() => ({
     fontSize: '30px',
     fontWeight: 'bolder',
   },
-  navBackground: {
-    backgroundColor: '#fff',
-  },
 }));
 
 const Header = ({ themeFunc }) => {
@@ -35,7 +32,7 @@ const Header = ({ themeFunc }) => {
   };
 
   return (
-    <AppBar position="static" className={classes.navBackground}>
+    <AppBar position="static" color="inherit">
       <Toolbar>
         <Container>
           <Grid container justify="space-between" alignItems="center">
