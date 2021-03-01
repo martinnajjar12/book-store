@@ -7,7 +7,7 @@ Styled via Material UI. Dark and light themes were implemented and localStorage 
 
 ## Live Demo
 
-[Live Demo Link](https://martin-book-store.herokuapp.com/)<br />
+[Live Demo Link](https://mbooks-store.netlify.app/)<br />
 
 ![](./desktop.png)
 <p align="center">Desktop screenshot</p><br />
