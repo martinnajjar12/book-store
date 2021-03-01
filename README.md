@@ -2,18 +2,24 @@
 
 # Book Store
 
-> A React-Redux application.
-
-## Built With
-
-- HTML5
-- ReactJS
-- Redux
-- Redux Toolkit
+> A react application that lets you create a new book or delete a specific book using Redux.<br />
+Styled via Material UI. Dark and light themes were implemented and localStorage was used to save the preferred theme of the user.
 
 ## Live Demo
 
-[Live Demo Link](https://martin-book-store.herokuapp.com/)
+[Live Demo Link](https://martin-book-store.herokuapp.com/)<br />
+
+![](./desktop.png)
+<p align="center">Desktop screenshot</p><br />
+
+![](./mobile.png)
+<p>Mobile screenshot</p><br />
+
+## Built With
+
+- ReactJS
+- Redux
+- Material UI
 
 ## Authors
 
