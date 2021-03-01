@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const CategoryFilter = ({ filterHandler }) => {
   const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
   return (
-    <form>
-      <select onChange={e => filterHandler(e.target.value)}>
-        <option key="All" value="All">All</option>
-        { categories.map(category => (
-          <option key={category} value={category}>{category}</option>)) }
-      </select>
-    </form>
+    <Autocomplete
+      onChange={e => filterHandler(e.target.textContent)}
+      onKeyUp={e => {
+        if (e.key === 'Enter') {
+          filterHandler(e.target.value);
+        }
+      }}
+      options={['All', ...categories]}
+      getOptionLabel={option => option}
+      style={{ width: '100%', marginTop: 40 }}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      renderInput={params => <TextField {...params} label="Category Filtering" variant="outlined" />}
+    />
   );
 };
 
